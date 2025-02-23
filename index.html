@@ -51,13 +51,16 @@
         .item {
             margin: 10px 0;
         }
+        .tasks {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Welcome to My Custom Tap Swap!</h1>
         <p>Click the button below to start earning alerts and check your status.</p>
-        <button onclick="incrementScore()"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fparsstock.ir%2Fsearch.aspx%3Fsearchterm%3Dsiren&psig=AOvVaw1YXkSvtc3UV1nvzZbuuQSJ&ust=1740426201200000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCJCa-__G2osDFQAAAAAdAAAAABAE" alt="Click" style="width: 30px; height: 30px;"></button>
+        <button onclick="incrementScore()"><img src="https://parsstock.ir/600/10176/1342048-%D9%88%DA%A9%D8%AA%D9%88%D8%B1-%D8%A2%DA%98%DB%8C%D8%B1-%D9%BE%D9%84%DB%8C%D8%B3-%DA%86%D8%B4%D9%85%DA%A9-%D8%B2%D9%86-%D8%A7%D8%B6%D8%B7%D8%B1%D8%A7%D8%B1%DB%8C.jpg" alt="Click" style="width: 30px; height: 30px;"></button>
         <div class="scoreboard">
             <p>Your current score: <span id="score">0</span> alerts</p>
         </div>
@@ -69,13 +72,30 @@
                 <li>Item 3: 300 alerts</li>
             </ul>
         </div>
+        <div class="tasks">
+            <p>Tasks:</p>
+            <ul id="tasks-list">
+                <!-- Task items will be dynamically added here -->
+            </ul>
+        </div>
     </div>
     <script>
         let score = 0;
         function incrementScore() {
             score += 1;
-            document.getElementById("score").innerText = score;
+            document.getElementById("score").innerText = score.toFixed(2);
         }
+
+        function addTask(name, description, alerts) {
+            const taskList = document.getElementById("tasks-list");
+            const taskItem = document.createElement("li");
+            taskItem.innerText = `${name}: ${description} - ${alerts} alerts`;
+            taskList.appendChild(taskItem);
+        }
+
+        // Example of adding tasks dynamically
+        addTask('Task 1', 'Complete this task', 10);
+        addTask('Task 2', 'Join a group', 5);
     </script>
 </body>
 </html>
